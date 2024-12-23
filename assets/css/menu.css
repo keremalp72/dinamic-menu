@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui;
+  padding: 20px;
+}
+ul {
+  list-style: none;
+}
+.nav ul {
+  display: none;
+  margin-left: 20px
+}
+.nav label {
+  padding: 5px;
+  display: inline-block;
+}
+.nav input[type="checkbox"] {
+  appearance: none;
+  &::before {
+    content: "➕";
+    cursor: pointer;
+  }
+  &:is(:checked)::before {
+    content: "➖";
+  }
+}
+.nav li:not(:has(ul)) input[type="checkbox"]:before,
+.nav li:not(:has(ul)) input[type="checkbox"]:checked::before {
+  content: "";
+}
+.nav label:has(:checked) + ul {
+  display: block;
+}
